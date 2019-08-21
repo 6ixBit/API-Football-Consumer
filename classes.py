@@ -1,15 +1,12 @@
-import threading
-
-
 class Player_info:
-    def __init__(self, first_name="", last_name="", player_name='', player_rating=0.0,
+    def __init__(self, first_name="", last_name="", player_name='', rating=0.0,
                  mins_played=0, team_name="", league="", position="", age=0, birth_date="", season="", nationality="",
                  height="", weight="",
                  ):
         self.first_name = first_name
         self.last_name = last_name
         self.player_name = player_name
-        self.player_rating = player_rating
+        self.rating = rating
         self.mins_played = mins_played
         self.team_name = team_name
         self.league = league
@@ -83,11 +80,14 @@ class Player_penalties:
 
 
 class Player_games:
-    def __init__(self, appearences=0, minutes_played=0, lineups=0):
+    def __init__(self, appearences=0, minutes_played=0, starts=0):
         self.appearences = appearences
         self.minutes_played = minutes_played
-        self.lineups = lineups
+        self.starts = starts
 
 
-def run():
-    print("TESTING")
+class Player_subs:
+    def __init__(self, subbed_in=0, subbed_out=0, bench=0):
+        self.subbed_in = subbed_in
+        self.subbed_out = subbed_out
+        self.bench = bench

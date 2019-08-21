@@ -1,5 +1,5 @@
 import pymongo
-import requests
+
 
 #Setup database instance
 my_client = pymongo.MongoClient("mongodb://localhost:27017/")
