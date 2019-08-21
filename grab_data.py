@@ -1,9 +1,10 @@
 import requests
 from pprint import pprint
 import classes
+import pymongo
 
 #API Access
-rapid_key = "9fde00920fmsh2b95942b59e9d3ep10ab71jsn1b9295c2d6d8"
+rapid_key = ""
 
 url_1 = "https://api-football-v1.p.rapidapi.com/v2/teams/league/524" #Get team_ids
 url_2 = "https://api-football-v1.p.rapidapi.com/v2/players/team/"
@@ -172,4 +173,5 @@ for b in team_ids:
 
                 counter += 1
 
-pprint(player_dict)
+
+
