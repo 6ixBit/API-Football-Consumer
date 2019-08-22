@@ -3,8 +3,17 @@ from pprint import pprint
 import classes
 import pymongo
 
+#Setup database instance
+my_client = pymongo.MongoClient("mongodb+srv://admin:nYZzNHx1X2wbi9vc@zeus-uu6gn.mongodb.net/test?retryWrites=true&w=majority")
+
+#DB setup
+db = my_client['player_db']
+
+#Collection
+collection = db["PL_19-20"]
+
 #API Access
-rapid_key = ""
+rapid_key = "5d12d19585msh314f48cf12b3084p1916cbjsnef90f29e64e5"
 
 url_1 = "https://api-football-v1.p.rapidapi.com/v2/teams/league/524" #Get team_ids
 url_2 = "https://api-football-v1.p.rapidapi.com/v2/players/team/"
@@ -153,24 +162,51 @@ for b in team_ids:
                 player_subs.subbed_out = level_2[counter]['substitutes']['out']
 
                 #Fill dictionary with all player stats
-                player_dict.update({
-                           player_i.player_name: [player_i.team_name, player_i.first_name, player_i.last_name, player_i.mins_played, #General player info
-                           player_i.rating, player_i.league, player_i.position, player_i.age, player_i.birth_date,
-                           player_i.season, player_i.nationality, player_i.height, player_i.weight,
-                           player_s.total_shots, player_s.shots_on_target,                                           #Shots
-                           player_g.goals, player_g.assists, player_g.goals_conceded,                                #Goals
-                           player_p.total_passes, player_p.pass_accuracy, player_p.key_passes,                       #Passing
-                           player_t.total_tackles, player_t.interceptions, player_t.blocks,                          #Blocks
-                           player_d.total_duels, player_d.duels_won,                                                 #Duels
-                           player_drib.dribble_attempts, player_drib.dribbles_successful,                            #Dribbles
-                           player_f.fouls_drawn, player_f.fouls_committed,                                           #Fouls
-                           player_c.yellow_cards, player_c.red_cards,                                                #Cards
-                           player_pen.penalties_won, player_pen.penalties_committed, player_pen.penalties_success,   #Pens
-                           player_pen.penalties_missed, player_pen.penalties_saved,
-                           player_games.appearences, player_games.minutes_played, player_games.starts,               #Games
-                           player_subs.bench, player_subs.subbed_in, player_subs.subbed_out                          #Subs
-                           ]})
-
+                mydict = {"Full_name": player_i.player_name,
+                          "team_name": player_i.team_name,
+                          "first_name": player_i.first_name,
+                          "last_name": player_i.last_name,
+                          "minutes_played": player_games.minutes_played,
+                          "rating": player_i.rating,
+                          "competition": player_i.league,
+                          "position": player_i.position,
+                          "age": player_i.age,
+                          "birth_date": player_i.birth_date,
+                          "season": player_i.season,
+                          "nationality": player_i.nationality,
+                          "height": player_i.height,
+                          "weight": player_i.weight,
+                          "total_shots": player_s.total_shots,
+                          "shots_on_target": player_s.shots_on_target,
+                          "goals": player_g.goals,
+                          "assists": player_g.assists,
+                          "goals_conceded": player_g.goals_conceded,
+                          "total_passes": player_p.total_passes,
+                          "pass_accuracy": player_p.pass_accuracy,
+                          "key_passes": player_p.key_passes,
+                          "total_tackles": player_t.total_tackles,
+                          "interceptions": player_t.interceptions,
+                          "blocks": player_t.blocks,
+                          "total_duels": player_d.total_duels,
+                          "duels_won": player_d.duels_won,
+                          "dribble_attempts": player_drib.dribble_attempts,
+                          "dribbles_successful": player_drib.dribbles_successful,
+                          "fouls_drawn": player_f.fouls_drawn,
+                          "fouls_committed": player_f.fouls_committed,
+                          "yellow_cards": player_c.yellow_cards,
+                          "red_cards": player_c.red_cards,
+                          "penalties_won": player_pen.penalties_won,
+                          "penalties_committed": player_pen.penalties_committed,
+                          "penalties_success": player_pen.penalties_success,
+                          "penalties_missed": player_pen.penalties_missed,
+                          "penalties_saved": player_pen.penalties_saved,
+                          "appearances": player_games.appearences,
+                          "matchday_starts": player_games.starts,
+                          "bench": player_subs.bench,
+                          "subbed_in": player_subs.subbed_in,
+                          "subbed_out": player_subs.subbed_out
+                          }
+                collection.insert_one(mydict) #Commit to db
                 counter += 1
 
 
