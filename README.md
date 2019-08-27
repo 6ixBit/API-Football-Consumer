@@ -10,5 +10,6 @@ Scripted in Python, powered by MongoDB.
 4. Activate virtual environment (source venv/bin/activate)
 5. Install packages (pip install <package>). Replace <package> with pymongo and run it. Do the same for requests, pymongo and pprint
   
-  
+ # Run
+ Run the grab_data.py script by typing (python3 grab_data.py) in your terminal.  
  
