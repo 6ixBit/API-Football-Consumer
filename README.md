@@ -3,7 +3,7 @@
 Scripted in Python, powered by MongoDB.
 
 # About
-
+This application grabs data from an API, it sorts it and then writes it to my mongo database which is currenlty being used to host the stats of every Premier League player in the 19/20 football season. Stats such as shots, goals, assits, player info are all stored.
 
 # Setup
 
