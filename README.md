@@ -2,6 +2,9 @@
 
 Scripted in Python, powered by MongoDB.
 
+# About
+
+
 # Setup
 
 1. Install Python 3 on your machine. https://www.python.org/downloads/
