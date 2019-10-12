@@ -4,7 +4,7 @@ import classes
 import pymongo
 
 #Setup database instance
-my_client = pymongo.MongoClient("mongodb+srv://admin:nYZzNHx1X2wbi9vc@zeus-uu6gn.mongodb.net/test?retryWrites=true&w=majority")
+my_client = pymongo.MongoClient("MONGO URL HERE")
 
 #DB setup
 db = my_client['player_db']
@@ -13,7 +13,7 @@ db = my_client['player_db']
 collection = db["PL_19-20"]
 
 #API Access
-rapid_key = "5d12d19585msh314f48cf12b3084p1916cbjsnef90f29e64e5"
+rapid_key = "RAPID API KEY HERE"
 
 url_1 = "https://api-football-v1.p.rapidapi.com/v2/teams/league/524" #Get team_ids
 url_2 = "https://api-football-v1.p.rapidapi.com/v2/players/team/"
